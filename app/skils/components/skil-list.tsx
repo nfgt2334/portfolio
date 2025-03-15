@@ -22,10 +22,10 @@ export default function SkilList() {
         centeredSlides={true}
         slidesPerView={3}
         loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // }}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
