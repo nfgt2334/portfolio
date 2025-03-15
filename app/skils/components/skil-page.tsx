@@ -4,8 +4,6 @@ import style from './skil-page.module.css'
 import SkilList from './skil-list'
 import { useSkils } from '../hooks/useSkils'
 
-import { Text } from '@mantine/core'
-
 export default function SkilsClient() {
   const { timeElapsed } = useSkils()
 
@@ -14,23 +12,12 @@ export default function SkilsClient() {
       <p className={style.SkilPageTitleP}>Skil set</p>
       <div className={style.WorkExperienceDiv}>
         Work experience <br />
-        <Text
-          size="xl"
-          fw={500}
-          variant="gradient"
-          gradient={{ from: 'yellow', to: 'pink', deg: 90 }}
-        >
+        <p>
           {timeElapsed.years} years, {timeElapsed.months} months,{' '}
           {timeElapsed.days} days
-        </Text>
-        <Text
-          size="xl"
-          fw={500}
-          variant="gradient"
-          gradient={{ from: 'rgba(0, 237, 36, 1)', to: 'yellow', deg: 129 }}
-        >
-          {timeElapsed.formattedTime}
-        </Text>
+        </p>
+        {/* 初回ロード時(サーバー側での初回レンダリング時)と、ブラウザリロード時の時間に差が出てしまうため、コメントアウト */}
+        {/* <p>{timeElapsed.formattedTime}</p> */}
       </div>
       <SkilList />
     </div>

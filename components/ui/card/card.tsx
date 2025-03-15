@@ -4,21 +4,12 @@ import style from './card.module.scss'
 
 type PrimaryCardProps = {
   children: React.ReactNode
-  hoverEffect?: boolean
 }
 
-export default function PrimaryCard({
-  children,
-  hoverEffect,
-}: PrimaryCardProps) {
+export default function PrimaryCard({ children }: PrimaryCardProps) {
   return (
     <>
-      <Card
-        shadow="sm"
-        className={`${style.PrimaryCard} ${
-          hoverEffect ? style.hoverEffect : ''
-        }`}
-      >
+      <Card shadow="sm" className={style.PrimaryCard}>
         {children}
       </Card>
     </>

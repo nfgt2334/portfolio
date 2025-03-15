@@ -5,6 +5,7 @@ export type Skill = {
   icon: IconType
   color: string
   passedYear: string
+  modifier: string
 }
 
 export type DisplayForm = {

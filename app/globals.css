@@ -1,13 +1,6 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0e1b2b;
+  --foreground: #ffffff;
 }
 
 html,
@@ -19,10 +12,19 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(16, 16, 16, 1) 0%,
+    rgba(27, 28, 35, 1) 25%,
+    rgba(46, 47, 55, 1) 50%,
+    rgba(27, 28, 35, 1) 75%,
+    rgba(16, 16, 16, 1) 100%
+  );
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 24px;
 }
 
 * {
