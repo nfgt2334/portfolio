@@ -7,7 +7,3 @@ export type Skill = {
   passedYear: string
   modifier: string
 }
-
-export type DisplayForm = {
-  isShowModal: boolean
-}

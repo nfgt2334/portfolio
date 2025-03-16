@@ -1,11 +1,11 @@
 'use client'
 
-import style from './skil-list.module.scss'
+import style from './SkilList.module.scss'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 
-import PrimaryCard from '@/components/ui/card/card'
+import PrimaryCard from '@/components/atoms/card/PrimaryCard'
 import { useSkils } from '../hooks/useSkils'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -18,20 +18,27 @@ export default function SkilList() {
     <div className={style.SwiperCarouselDiv}>
       <Swiper
         effect="coverflow"
-        grabCursor={true}
-        centeredSlides={true}
+        grabCursor
+        centeredSlides
         slidesPerView={3}
-        loop={true}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
+        loop
+        autoplay={{ delay: 2500 }}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
-          depth: 200,
+          depth: 250,
           modifier: 1,
-          slideShadows: true,
+        }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
         }}
         modules={[EffectCoverflow, Autoplay]}
         className={style.Swiper}

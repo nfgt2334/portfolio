@@ -1,6 +1,6 @@
 import { Card } from '@mantine/core'
 
-import style from './card.module.scss'
+import style from './PrimaryCard.module.scss'
 
 type PrimaryCardProps = {
   children: React.ReactNode

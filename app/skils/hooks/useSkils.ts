@@ -1,9 +1,8 @@
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs } from 'react-icons/fa'
 import { SiTypescript, SiNextdotjs, SiNuxtdotjs } from 'react-icons/si'
 
-import { useState } from 'react'
 import { useElapsedTime } from './useElapsedTime'
-import type { Skill, DisplayForm } from '../types'
+import type { Skill } from '../types'
 
 export const useSkils = () => {
   const getElpassedYearsAndMonth = (year: number, month: number) => {
@@ -83,17 +82,5 @@ export const useSkils = () => {
   const startDate = new Date('2023-02-01T00:00:00')
   const timeElapsed = useElapsedTime(startDate)
 
-  const [displayForm, setDisplayForm] = useState<DisplayForm>({
-    isShowModal: false,
-  })
-
-  const onClickOpenModal = () => {
-    setDisplayForm({ isShowModal: true })
-  }
-
-  const onCloseModal = () => {
-    setDisplayForm({ isShowModal: false })
-  }
-
-  return { skils, displayForm, timeElapsed, onClickOpenModal, onCloseModal }
+  return { skils, timeElapsed }
 }

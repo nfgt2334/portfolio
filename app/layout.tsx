@@ -1,9 +1,11 @@
 import '@mantine/core/styles.css'
 import './globals.css'
-import { Montserrat } from 'next/font/google'
 
+import { Montserrat } from 'next/font/google'
 import type { Metadata } from 'next'
 import { createTheme, MantineProvider } from '@mantine/core'
+
+import HeaderPage from '@/components/layouts/header/HeaderPage'
 
 const theme = createTheme({
   fontFamily: 'Open Sans, sans-serif',
@@ -27,7 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <MantineProvider theme={theme} defaultColorScheme="auto">
+        <MantineProvider theme={theme} defaultColorScheme="dark">
+          <HeaderPage />
           {children}
         </MantineProvider>
       </body>

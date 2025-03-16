@@ -1,10 +1,10 @@
 'use client'
 
-import style from './skil-page.module.css'
-import SkilList from './skil-list'
+import style from './SkilsPage.module.scss'
+import SkilList from './SkilList'
 import { useSkils } from '../hooks/useSkils'
 
-export default function SkilsClient() {
+export default function SkilsPage() {
   const { timeElapsed } = useSkils()
 
   return (
