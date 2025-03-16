@@ -6,6 +6,7 @@ import { useDisclosure } from '@mantine/hooks'
 import { MdHome } from 'react-icons/md'
 
 import styles from './HeaderPage.module.scss'
+
 import { useHeaders } from '@/hooks/layouts/useHeaders'
 
 export default function HeaderPage() {

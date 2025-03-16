@@ -1,5 +1,8 @@
 'use client'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { EffectCoverflow, Autoplay } from 'swiper/modules'
+
 import style from './SkilList.module.scss'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
@@ -7,9 +10,6 @@ import 'swiper/css/pagination'
 
 import PrimaryCard from '@/components/atoms/card/PrimaryCard'
 import { useSkils } from '../hooks/useSkils'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCoverflow, Autoplay } from 'swiper/modules'
 
 export default function SkilList() {
   const { skils } = useSkils()

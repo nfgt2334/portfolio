@@ -4,7 +4,7 @@ type TimeElapsed = {
   years: number
   months: number
   days: number
-  formattedTime: string // "hh:mm:ss" 形式
+  formattedTime: string
 }
 
 const calculateElapsedTime = (start: Date): TimeElapsed => {

@@ -1,8 +1,9 @@
-import styles from './page.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsStack } from 'react-icons/bs'
 import { IoPerson } from 'react-icons/io5'
+
+import styles from './page.module.css'
 
 export default function Home() {
   const links = [

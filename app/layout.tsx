@@ -1,9 +1,9 @@
+import type { Metadata } from 'next'
+import { Montserrat } from 'next/font/google'
+import { createTheme, MantineProvider } from '@mantine/core'
+
 import '@mantine/core/styles.css'
 import './globals.css'
-
-import { Montserrat } from 'next/font/google'
-import type { Metadata } from 'next'
-import { createTheme, MantineProvider } from '@mantine/core'
 
 import HeaderPage from '@/components/layouts/header/HeaderPage'
 

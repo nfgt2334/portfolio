@@ -1,8 +1,8 @@
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs } from 'react-icons/fa'
 import { SiTypescript, SiNextdotjs, SiNuxtdotjs } from 'react-icons/si'
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs } from 'react-icons/fa'
 
+import type { Skil } from '../types'
 import { useElapsedTime } from './useElapsedTime'
-import type { Skill } from '../types'
 
 export const useSkils = () => {
   const getElpassedYearsAndMonth = (year: number, month: number) => {
@@ -20,7 +20,7 @@ export const useSkils = () => {
     return `${years}年${months}ヶ月`
   }
 
-  const skils: Skill[] = [
+  const skils: Skil[] = [
     {
       name: 'HTML',
       icon: FaHtml5,

@@ -1,6 +1,7 @@
 'use client'
 
 import style from './SkilsPage.module.scss'
+
 import SkilList from './SkilList'
 import { useSkils } from '../hooks/useSkils'
 

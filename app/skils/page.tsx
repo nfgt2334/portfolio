@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import SkilsPage from './components/SkilsPage' // クライアントコンポーネントを呼び出す
+import SkilsPage from './components/SkilsPage'
 
 export const metadata: Metadata = {
   title: 'Skils | Portfolio',
