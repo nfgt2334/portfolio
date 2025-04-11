@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend README
 
-## Getting Started
+## プロジェクト構成
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+portfolio/
+|-- src/
+|   |-- app/            # Next.js App Router
+|   |-- components/     # 共通コンポーネント
+|   |-- utils/          # ユーティリティ関数
+|   |-- context/        # コンテキストAPI
+|   |-- providers/      # プロバイダー
+|   |-- hooks/          # カスタムフック
+|   |-- lib/            # ライブラリ
+|   |-- test/           # テスト関連
+|   |-- types/          # 型定義
+|   |-- middleware.ts     # ミドルウェア
+|-- public/             # 静的ファイル
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## コンポーネント設計
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Atomic Design**を参考に設計
+  - `app/`: Next.jsのアプリケーションルーター
+  - `components/`: 共通コンポーネント(フォーム、リスト等)
+  - `utils/`: プロジェクト内共通のユーティリティー関数を定義(エラーハンドラー等)
+  - `context/`: TODO
+  - `providers/`: TODO フラッシュメッセージ等
+  - `hooks/`: カスタムフック(useAuth等)
+  - `lib/`: ライブラリ関連(バリデーションスキーマ等)
+  - `middleware/`: ミドルウェア
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Typescript
 
-## Learn More
+- 型定義は明示的に行う
+- 横断的に使用される型は`src/types/`に定義し、コンポーネント内でしか使用されない型は`app/(pagename)/types.tsx`に定義する
 
-To learn more about Next.js, take a look at the following resources:
+## スタイリング
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Tailwind CSSを使用
+- 複雑なスタイルはコンポーネント内でクラス名を変数化
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript
+const buttonStyles = {
+    base: 'px-4 py-2 rounded',
+    primary: 'bg-blue-500 text-white',
+    secondary: 'bg-gra-500 text-white',
+}
+```
 
-## Deploy on Vercel
+## パフォーマンス最適化
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 画像の最適化(Next.jsの`Image`コンポーネントを使用)
