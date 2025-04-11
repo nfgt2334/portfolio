@@ -1,7 +1,7 @@
 import { describe } from 'node:test'
 import { expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import SkilsPage from '@/app/skils/components/SkilsPage'
+import SkilsPage from '@/app/skils/_components/SkilsPage'
 
 vi.mock('@/app/skils/hooks/useSkils', () => ({
   useSkils: () => ({

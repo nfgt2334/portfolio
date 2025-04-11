@@ -3,26 +3,24 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Autoplay } from 'swiper/modules'
 
-import style from './SkilList.module.scss'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 
-import PrimaryCard from '@/components/atoms/card/PrimaryCard'
-import { useSkils } from '../hooks/useSkils'
+import { useSkils } from '../_hooks/useSkils'
 
-export default function SkilList() {
+export function SkilList() {
   const { skils } = useSkils()
 
   return (
-    <div className={style.SwiperCarouselDiv}>
+    <div>
       <Swiper
         effect="coverflow"
         grabCursor
         centeredSlides
         slidesPerView={3}
-        loop
-        autoplay={{ delay: 2500 }}
+        // loop
+        // autoplay={{ delay: 2500 }}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -41,21 +39,16 @@ export default function SkilList() {
           },
         }}
         modules={[EffectCoverflow, Autoplay]}
-        className={style.Swiper}
       >
         {skils.map((skil) => (
           <SwiperSlide key={skil.name}>
-            <PrimaryCard>
-              <div className={style[`CardDiv${skil.modifier}`]}>
-                <skil.icon color={skil.color} className={style.CardIcon} />
-                <div className={style.CardTextDiv}>
-                  <p className={style[`SkilNameP${skil.modifier}`]}>
-                    {skil.name}
-                  </p>
-                  <p>経験年数：{skil.passedYear}</p>
-                </div>
+            <div className="flex flex-col items-center justify-center h-full">
+              <skil.icon color={skil.color} className="w-40 h-56" />
+              <div className="mt-2">
+                <p className="font-bold mb-2">{skil.name}</p>
+                <p className="mb-2">経験年数：{skil.passedYear}</p>
               </div>
-            </PrimaryCard>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

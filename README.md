@@ -3,8 +3,8 @@
 ## プロジェクト構成
 
 ```
-portfolio/
-|-- src/
+/
+|-- portfolio/
 |   |-- app/            # Next.js App Router
 |   |-- components/     # 共通コンポーネント
 |   |-- utils/          # ユーティリティ関数
@@ -14,7 +14,7 @@ portfolio/
 |   |-- lib/            # ライブラリ
 |   |-- test/           # テスト関連
 |   |-- types/          # 型定義
-|   |-- middleware.ts     # ミドルウェア
+|   |-- middleware.ts   # ミドルウェア
 |-- public/             # 静的ファイル
 ```
 
