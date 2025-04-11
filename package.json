@@ -9,7 +9,8 @@
     "lint": "next lint",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
-    "stylelint": "stylelint '**/*.scss'"
+    "stylelint": "stylelint '**/*.scss'",
+    "test": "vitest"
   },
   "dependencies": {
     "@mantine/core": "^7.17.1",
@@ -26,17 +27,23 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.22.0",
     "eslint-config-next": "15.2.1",
+    "jsdom": "^26.0.0",
     "postcss": "^8.5.3",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.5.3",
     "stylelint": "^16.16.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.8"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
