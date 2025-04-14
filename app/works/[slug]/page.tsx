@@ -57,10 +57,13 @@ export default async function WorkDetailPage({
 }: {
   params: { slug: string }
 }) {
-  const { slug } = await params
-  const work = works[slug as keyof typeof works]
-
-  if (!work) return notFound()
+  let work
+  try {
+    const { slug } = await params
+    work = works[slug as keyof typeof works]
+  } catch {
+    return notFound()
+  }
 
   return (
     <div className="min-h-screen px-4 py-12 max-w-3xl mx-auto space-y-8">
