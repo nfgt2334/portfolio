@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { Briefcase } from 'lucide-react'
 import type { DisplayWork } from './types'
 
 const works: DisplayWork[] = [
@@ -37,9 +36,10 @@ const works: DisplayWork[] = [
 export default function WorksPage() {
   return (
     <div className="min-h-screen px-4 py-12 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8 flex items-center space-x-2">
-        <Briefcase className="w-8 h-8" />
-        <span>Works</span>
+      <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
+        <span>
+          Works <span className="text-gray-500 text-sm">職務経歴</span>
+        </span>
       </h1>
       <div className="grid gap-6 sm:grid-cols-2">
         {works.map((work) => (

@@ -1,53 +1,46 @@
-# Frontend README
+# ポートフォリオサイト
 
-## プロジェクト構成
+このリポジトリは、私のポートフォリオサイトのソースコードです。  
+**Next.js × TypeScript × Tailwind CSS** を用いて開発し、デザイン・アニメーション・レスポンシブ対応などを意識して作成しました。
 
-```
-/
-|-- portfolio/
-|   |-- app/            # Next.js App Router
-|   |-- components/     # 共通コンポーネント
-|   |-- utils/          # ユーティリティ関数
-|   |-- context/        # コンテキストAPI
-|   |-- providers/      # プロバイダー
-|   |-- hooks/          # カスタムフック
-|   |-- lib/            # ライブラリ
-|   |-- test/           # テスト関連
-|   |-- types/          # 型定義
-|   |-- middleware.ts   # ミドルウェア
-|-- public/             # 静的ファイル
-```
+デモサイト：[https://portfolio-git-main-takeshifujikis-projects.vercel.app](https://portfolio-git-main-takeshifujikis-projects.vercel.app)
 
-## コンポーネント設計
+---
 
-- **Atomic Design**を参考に設計
-  - `app/`: Next.jsのアプリケーションルーター
-  - `components/`: 共通コンポーネント(フォーム、リスト等)
-  - `utils/`: プロジェクト内共通のユーティリティー関数を定義(エラーハンドラー等)
-  - `context/`: TODO
-  - `providers/`: TODO フラッシュメッセージ等
-  - `hooks/`: カスタムフック(useAuth等)
-  - `lib/`: ライブラリ関連(バリデーションスキーマ等)
-  - `middleware/`: ミドルウェア
+## 使用技術
 
-## Typescript
+- フロントエンド：Next.js (App Router)
+- 言語：TypeScript
+- スタイリング：Tailwind CSS
+- デプロイ：Vercel
+- アイコン：React Icons
 
-- 型定義は明示的に行う
-- 横断的に使用される型は`src/types/`に定義し、コンポーネント内でしか使用されない型は`app/(pagename)/types.tsx`に定義する
+---
 
-## スタイリング
+## 機能・構成
 
-- Tailwind CSSを使用
-- 複雑なスタイルはコンポーネント内でクラス名を変数化
+- トップページ
+  - スクロールアニメーションやナビゲーションアニメーションあり
+- Profile - プロフィール
+  - 自己紹介、スキルセット、経験の概要を記載
+- Works - 職務経歴ページ
+  - これまでの職務経歴の一覧と、詳細ページ
+- Contact - お問い合わせページ
+  - メール送信用のフォーム（※実装中）
 
-```typescript
-const buttonStyles = {
-    base: 'px-4 py-2 rounded',
-    primary: 'bg-blue-500 text-white',
-    secondary: 'bg-gra-500 text-white',
-}
-```
+---
 
-## パフォーマンス最適化
+## 工夫した点
 
-- 画像の最適化(Next.jsの`Image`コンポーネントを使用)
+- **Tailwind CSSのユーティリティクラスでスピード感のある開発**
+- **レスポンシブデザインでPC/スマホ両方に最適化**
+- **再利用可能なコンポーネント設計で保守性を意識**
+- **コードの可読性と命名規則の統一**
+
+---
+
+## 今後の改善ポイント
+
+- OGPやSEO対応の強化
+- ダークモード対応（※予定がある場合）
+- Worksの内容を随時アップデート
