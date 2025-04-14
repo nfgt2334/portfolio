@@ -16,21 +16,13 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    try {
-      // TODO: API
-      console.log('送信内容:', form)
-      showMessage({
-        title: '送信完了',
-        message: 'お問い合わせありがとうございます',
-        type: 'success',
-      })
-    } catch (error) {
-      showMessage({
-        title: '送信失敗',
-        message: 'お問い合わせに失敗しました',
-        type: 'error',
-      })
-    }
+    // TODO: API
+    console.log('送信内容:', form)
+    showMessage({
+      title: '送信完了',
+      message: 'お問い合わせありがとうございます',
+      type: 'success',
+    })
   }
 
   return (
