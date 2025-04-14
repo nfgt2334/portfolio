@@ -52,17 +52,15 @@ const works = {
   },
 }
 
-export default function WorkDetailPage({
+export default async function WorkDetailPage({
   params,
 }: {
   params: { slug: string }
 }) {
-  const { slug } = params
+  const { slug } = await params
   const work = works[slug as keyof typeof works]
 
-  if (!work) {
-    return notFound()
-  }
+  if (!work) return notFound()
 
   return (
     <div className="min-h-screen px-4 py-12 max-w-3xl mx-auto space-y-8">
