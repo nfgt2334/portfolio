@@ -28,7 +28,11 @@ export default function Skills() {
 
   return (
     <div className="min-h-screen px-6 py-12 max-w-4xl mx-auto bg-white text-black">
-      <h1 className="text-4xl font-extrabold text-center mb-8">Skills</h1>
+      <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
+        <span>
+          Skills <span className="text-gray-500 text-sm">技術スタック</span>
+        </span>
+      </h1>
 
       {/* エンジニア経験年数 */}
       <div className="mb-8 text-center">

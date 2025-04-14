@@ -9,6 +9,12 @@ import Link from 'next/link'
 export default function Profile() {
   return (
     <div className="min-h-screen px-6 py-12 max-w-4xl mx-auto">
+      <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
+        <span>
+          Profile <span className="text-gray-500 text-sm">プロフィール</span>
+        </span>
+      </h1>
+
       {/* Header */}
       <div className="flex flex-col items-center text-center mb-12">
         <Image

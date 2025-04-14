@@ -8,7 +8,7 @@ export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { href: '/home', label: 'Home', icon: Home },
+    { href: '/', label: 'Home', icon: Home },
     { href: '/profile', label: 'Profile', icon: User },
     { href: '/skills', label: 'Skills', icon: Code2 },
     { href: '/works', label: 'Works', icon: Briefcase },

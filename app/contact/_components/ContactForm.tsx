@@ -1,7 +1,6 @@
 'use client'
 
 import { useFlashMessage } from '@/context/FlashMessageContext'
-import { Mail } from 'lucide-react'
 import { useState } from 'react'
 
 export function ContactForm() {
@@ -27,10 +26,6 @@ export function ContactForm() {
 
   return (
     <div className="min-h-screen px-4 py-12 max-w-2xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8 flex items-center space-x-2">
-        <Mail className="w-8 h-8" />
-        <span>Contact(実装中)</span>
-      </h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="name" className="block font-medium mb-1">
@@ -76,7 +71,7 @@ export function ContactForm() {
         </div>
         <button
           type="submit"
-          className="w-full sm:w-auto bg-black text-white font-medium py-3 px-6 rounded-xl hover:bg-gray-800 transition"
+          className="w-full bg-black text-white font-medium py-3 px-6 rounded-xl hover:bg-gray-800 transition cursor-pointer"
         >
           送信
         </button>
