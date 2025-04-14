@@ -79,7 +79,7 @@ export function SkillList() {
           <div className="flex items-center gap-4">
             <FaReact size={40} className="text-blue-500" />
             <div>
-              <h3 className="font-medium">React, Next.js</h3>
+              <h3 className="font-medium">React</h3>
               <p className="text-sm text-gray-500">2ヶ月 (独学)</p>
             </div>
           </div>
