@@ -1,18 +1,19 @@
 'use client'
 
+import Link from 'next/link'
 import { Briefcase } from 'lucide-react'
 
 const works = [
   {
+    slug: 'portfolio',
     title: 'ポートフォリオサイト',
     description:
       'Next.js + Tailwind CSS + Radix UI を使ったポートフォリオサイト。',
-    link: 'https://example.com',
   },
   {
+    slug: 'internal-tool',
     title: '業務改善ツール',
     description: '社内業務を効率化するためのVue/Nuxt製のツール。',
-    link: 'https://example.com/tool',
   },
 ]
 
@@ -24,17 +25,15 @@ export default function WorksPage() {
         <span>Works</span>
       </h1>
       <div className="grid gap-6 sm:grid-cols-2">
-        {works.map((work, i) => (
-          <a
-            key={i}
-            href={work.link}
-            target="_blank"
-            rel="noopener noreferrer"
+        {works.map((work) => (
+          <Link
+            key={work.slug}
+            href={`/works/${work.slug}`}
             className="block p-6 border rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50"
           >
             <h2 className="text-xl font-semibold mb-2">{work.title}</h2>
             <p className="text-gray-600 text-sm">{work.description}</p>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
