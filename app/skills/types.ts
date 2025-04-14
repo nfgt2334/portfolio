@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons'
 
-export type Skil = {
+export type Skill = {
   name: string
   icon: IconType
   color: string

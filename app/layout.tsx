@@ -1,3 +1,5 @@
+import Provider from '@/providers/Provider'
+import { Navigation } from '@/components/Navigation'
 import { Theme } from '@radix-ui/themes'
 import type { Metadata } from 'next'
 import './globals.css'
@@ -15,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Theme>{children}</Theme>
+        <Theme>
+          <Provider>
+            <Navigation />
+            {children}
+          </Provider>
+        </Theme>
       </body>
     </html>
   )
