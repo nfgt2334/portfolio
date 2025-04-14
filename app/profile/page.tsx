@@ -1,10 +1,14 @@
-'use client'
-
 import { SiWantedly } from 'react-icons/si'
 import { FaGithub } from 'react-icons/fa'
 import { CiMail } from 'react-icons/ci'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Works | Portfolio',
+  description: 'Works page.',
+}
 
 export default function Profile() {
   return (
