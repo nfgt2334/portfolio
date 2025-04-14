@@ -52,16 +52,15 @@ const works = {
   },
 }
 
-export default async function WorkDetailPage({
+export default function WorkDetailPage({
   params,
 }: {
   params: { slug: string }
 }) {
-  let work
-  try {
-    const { slug } = await params
-    work = works[slug as keyof typeof works]
-  } catch {
+  const { slug } = params
+  const work = works[slug as keyof typeof works]
+
+  if (!work) {
     return notFound()
   }
 
