@@ -1,11 +1,27 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { SkillList } from './_components/SkillList'
-import useEngineerExperience from './_hooks/useEngineerExperience'
+import { useEngineerExperience } from './_hooks/useEngineerExperience'
 
 export default function Skills() {
-  const { years, months, days, hours, minutes, secs } =
-    useEngineerExperience('2023-02-01')
+  const { calculateEngineerExperience } = useEngineerExperience()
+  const [experience, setExperience] = useState<ReturnType<
+    typeof calculateEngineerExperience
+  > | null>(null)
+
+  useEffect(() => {
+    const update = () =>
+      setExperience(calculateEngineerExperience('2023-02-01'))
+    update() // 初回呼び出し
+
+    const interval = setInterval(update, 1000)
+    return () => clearInterval(interval)
+  }, [calculateEngineerExperience])
+
+  if (!experience) return null // サーバーとクライアントの不一致を防ぐ
+
+  const { years, months, days, hours, minutes, secs } = experience
 
   // フォーマットされた時間を作成
   const formattedExperience = `${years}年${months}ヶ月${days}日 ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
