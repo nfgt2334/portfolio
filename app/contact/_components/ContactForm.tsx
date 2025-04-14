@@ -37,7 +37,7 @@ export function ContactForm() {
     <div className="min-h-screen px-4 py-12 max-w-2xl mx-auto">
       <h1 className="text-4xl font-bold mb-8 flex items-center space-x-2">
         <Mail className="w-8 h-8" />
-        <span>Contact</span>
+        <span>Contact(実装中)</span>
       </h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
