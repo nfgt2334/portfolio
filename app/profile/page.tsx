@@ -1,10 +1,9 @@
 'use client'
 
-import { IoPerson } from 'react-icons/io5'
 import { SiWantedly } from 'react-icons/si'
 import { FaGithub } from 'react-icons/fa'
 import { CiMail } from 'react-icons/ci'
-// import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Profile() {
@@ -12,16 +11,15 @@ export default function Profile() {
     <div className="min-h-screen px-6 py-12 max-w-4xl mx-auto">
       {/* Header */}
       <div className="flex flex-col items-center text-center mb-12">
-        {/* <Image
-          src="/next.svg"
+        <Image
+          src="/profile-icon.jpeg"
           alt="プロフィール画像"
           width={120}
           height={120}
           className="rounded-full shadow-md mb-4"
-        /> */}
-        <IoPerson size="64" />
+        />
         <h1 className="text-3xl font-bold mb-2">Takeshi Fujiki</h1>
-        <p className="text-gray-600">フロントエンドエンジニア / UI好き</p>
+        <p className="text-gray-600">フロントエンドエンジニア / アニメ好き</p>
       </div>
 
       {/* Basic Info */}
