@@ -1,7 +1,11 @@
-'use client'
-
 import { Suspense } from 'react'
 import { ContactForm } from './_components/ContactForm'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Contact | Portfolio',
+  description: 'Contact page.',
+}
 
 export default function ContactPage() {
   return (

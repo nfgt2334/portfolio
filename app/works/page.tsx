@@ -1,7 +1,11 @@
-'use client'
-
 import Link from 'next/link'
+import { Metadata } from 'next'
 import type { DisplayWork } from './types'
+
+export const metadata: Metadata = {
+  title: 'Works | Portfolio',
+  description: 'Works page.',
+}
 
 const works: DisplayWork[] = [
   {
