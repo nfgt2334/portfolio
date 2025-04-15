@@ -35,29 +35,67 @@ const works: DisplayWork[] = [
     description:
       'P2MやJSTQBなどの資格を取得する為の勉強用Webサイトを社内で開発。',
   },
+  {
+    slug: 'portfolio-5',
+    title: '個人店向けHP',
+    period: '2024年3月〜2023年5月',
+    description: '両親が自営業で営むFujikiCAKEのホームページを自作しました。',
+    selfMade: true,
+  },
 ]
 
 export default function WorksPage() {
+  const careerWorks = works.filter((w) => !w.selfMade)
+  const selfMadeWorks = works.filter((w) => w.selfMade)
+
   return (
-    <div className="min-h-screen px-4 py-12 max-w-4xl mx-auto">
-      <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
-        <span>
-          Works <span className="text-gray-500 text-sm">職務経歴</span>
-        </span>
-      </h1>
-      <div className="grid gap-6 sm:grid-cols-2">
-        {works.map((work) => (
-          <Link
-            key={work.slug}
-            href={`/works/${work.slug}`}
-            className="block p-6 border rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50"
-          >
-            <h2 className="text-xl font-semibold">{work.title}</h2>
-            <span className="text-sm">{work.period}</span>
-            <p className="text-gray-600 text-sm mt-2">{work.description}</p>
-          </Link>
-        ))}
-      </div>
+    <div className="min-h-screen px-4 py-12 max-w-4xl mx-auto space-y-16">
+      {/* 職務経歴 */}
+      <section>
+        <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
+          <span>
+            Works <span className="text-gray-500 text-sm">職務経歴</span>
+          </span>
+        </h1>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {careerWorks.map((work) => (
+            <Link
+              key={work.slug}
+              href={`/works/${work.slug}`}
+              className="block p-6 border rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50"
+            >
+              <h2 className="text-xl font-semibold">{work.title}</h2>
+              <span className="text-sm">{work.period}</span>
+              <p className="text-gray-600 text-sm mt-2">{work.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 自作 */}
+      {selfMadeWorks.length > 0 && (
+        <section>
+          <h2 className="font-extrabold text-3xl font-bold mb-8 flex justify-center items-center space-x-2">
+            <span>
+              Personal Works{' '}
+              <span className="text-gray-500 text-sm">個人制作</span>
+            </span>
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {selfMadeWorks.map((work) => (
+              <Link
+                key={work.slug}
+                href={`/works/${work.slug}`}
+                className="block p-6 border rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50"
+              >
+                <h2 className="text-xl font-semibold">{work.title}</h2>
+                <span className="text-sm">{work.period}</span>
+                <p className="text-gray-600 text-sm mt-2">{work.description}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }

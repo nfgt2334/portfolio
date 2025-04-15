@@ -1,8 +1,9 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { FaAngleLeft } from 'react-icons/fa6'
-import Link from 'next/link'
+import type { DisplayWorkDetail } from '../types'
 
-const works = {
+const works: Record<string, DisplayWorkDetail> = {
   'portfolio-1': {
     title: '自社サービス開発',
     description:
@@ -50,6 +51,23 @@ const works = {
       'Django(RESTframework) / Vue.js(compositionAPI) / axsios / Pinia',
     teamSize: '5人',
   },
+  'portfolio-5': {
+    title: 'ケーキ・洋菓子専門サイト「FUJIKI CAKE」HP制作',
+    description:
+      '小規模店舗向けに「想い」と「世界観」を丁寧に伝えるブランドサイトを制作。\n' +
+      '両親が自営業で営むFujikiCAKEのホームページを自作しました。',
+    phase: 'デザイン、実装、SEO設計、デプロイ',
+    content:
+      '店舗の雰囲気やお菓子へのこだわりが伝わるよう、カラー設計・写真配置・フォント選びを丁寧に調整。\n' +
+      '特にファーストビューには動的な背景やアニメーションを用いて、世界観を印象づける構成に。\n' +
+      'SEO対策として、構造化マークアップ・meta設計も対応。\n' +
+      'また、Googleアナリティクスやサーチコンソールとの連携も実装し、運用後の改善にも配慮。\n' +
+      'XServerでの独自ドメイン作成から公開まで一貫して担当。',
+    environment: 'Mac / Visual Studio Code / GitHub / XServer',
+    framework: 'Vue.js / Nuxt.js / VUetify / axsios',
+    teamSize: '1人（デザイン〜実装〜公開まで全て担当）',
+    url: 'https://fujikicake.com/',
+  },
 }
 
 export default async function WorkDetailPage({
@@ -80,7 +98,7 @@ export default async function WorkDetailPage({
 
       <section className="space-y-2">
         <h2 className="text-xl font-semibold text-gray-800">概要</h2>
-        <p className="text-gray-700 leading-relaxed text-base">
+        <p className="text-gray-700 leading-relaxed text-base whitespace-pre-line">
           {work.description}
         </p>
       </section>
@@ -115,6 +133,20 @@ export default async function WorkDetailPage({
           <p className="text-gray-700 text-sm">{work.teamSize}</p>
         </div>
       </section>
+
+      {work.url && (
+        <section className="space-y-2">
+          <h2 className="text-xl font-semibold text-gray-800">公開URL</h2>
+          <a
+            href={work.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline break-all"
+          >
+            {work.url}
+          </a>
+        </section>
+      )}
     </div>
   )
 }
