@@ -9,15 +9,12 @@ module.exports = {
   semi: false,
   // 二重引用符の代わりに一重引用符を使用
   singleQuote: true,
-  //　可能な限り末尾にカンマを付ける
+  // 可能な限り末尾にカンマを付ける
   trailingComma: 'all',
 
   /**
    * 好みの設定
    */
   // アロー関数パラメータを括弧で囲む。型情報つけるので必須(ディフォルト値always)。
-  arrowParens: 'always' /**
-   * phpも自動フォーマットしたい
-   */,
-  // plugins: ['@prettier/plugin-php'],
+  arrowParens: 'always',
 }
