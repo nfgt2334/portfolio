@@ -1,7 +1,7 @@
 # ポートフォリオサイト
 
 このリポジトリは、私のポートフォリオサイトのソースコードです。  
-**Next.js × TypeScript × Tailwind CSS** を用いて開発し、デザイン・アニメーション・レスポンシブ対応などを意識して作成しました。
+**Next.js × TypeScript × Tailwind CSS** を用いて開発し、設計・ディレクトリ構成・再利用性などを意識して作成しました。
 
 デモサイト：[https://portfolio-git-main-takeshifujikis-projects.vercel.app](https://portfolio-git-main-takeshifujikis-projects.vercel.app)
 
@@ -32,6 +32,7 @@
 
 ## 工夫した点
 
+- **Atomic Designをベースにコンポーネントを整理**
 - **Tailwind CSSのユーティリティクラスでスピード感のある開発**
 - **レスポンシブデザインでPC/スマホ両方に最適化**
 - **再利用可能なコンポーネント設計で保守性を意識**
@@ -41,6 +42,7 @@
 
 ## 今後の改善ポイント
 
-- OGPやSEO対応の強化
-- ダークモード対応（※予定がある場合）
+- APIとの連携を含む動的データ表示の強化
+- ダークモード対応
 - Worksの内容を随時アップデート
+- テストコードの導入 (Vitest)
