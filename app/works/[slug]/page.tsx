@@ -10,7 +10,7 @@ const works: Record<string, DisplayWorkDetail> = {
       'IPO (新規上場) を目指す企業向けに、タスク管理や情報共有、進捗管理などを一元化して支援するSaaS型クラウドサービス。',
     phase: '実装、単体テスト',
     content:
-      'プロダクトチームが策定した仕様をもとに、UI改善‧バグ修正‧新機能追加などを担当。基本的にはテ ックリードのもとでサブタスクを進めるが、⼩規模な案件においては⼀⼈称で開発（仕様把握‧実装‧ テスト）までを⾏った。 特に、CSV⼀括インポート機能の開発では、ファイルの取得‧解析から、カラムごとの細かなバリデーシ ョン処理までをフロントエンドで⼀貫して実装。バックエンドと連携した登録処理のトリガーまでをス ムーズに繋げることで、ユーザーにとって使いやすく、かつシステムとしても堅牢な仕組みを構築し た。 また、チーム内では相互コードレビューの提案‧実施にも貢献し、レビュー負担の軽減およびメンバー の技術向上にも寄与。 ',
+      'プロダクトチームが策定した仕様をもとに、UI改善‧バグ修正‧新機能追加などを担当。\n基本的にはテックリードのもとでサブタスクを進めるが、⼩規模な案件においては⼀⼈称で開発（仕様把握‧実装‧ テスト）までを⾏った。 \n特に、CSV⼀括インポート機能の開発では、ファイルの取得‧解析から、カラムごとの細かなバリデーション処理までをフロントエンドで⼀貫して実装。バックエンドと連携した登録処理のトリガーまでをスムーズに繋げることで、ユーザーにとって使いやすく、かつシステムとしても堅牢な仕組みを構築した。 \nまた、チーム内では相互コードレビューの提案‧実施にも貢献し、レビュー負担の軽減およびメンバーの技術向上にも寄与。',
     environment: 'Windows / Visual Studio Code / GitHub / Docker',
     framework: 'TypeScript / Vue 3 / Nuxt 3 / Vuetify ',
     teamSize:
@@ -21,7 +21,7 @@ const works: Record<string, DisplayWorkDetail> = {
     description: '個人のお客様向けの保険加入WebサイトをLIFFアプリにて開発。',
     phase: '実装、単体テスト',
     content:
-      'オーナー、デザイナー、開発者間の会話から⽣まれたタスク(機能)を2週間スパンで実装。開発はペア プロで⾏い、ドライバーとナビゲーターに分かれ作業を実施。 フロント側では、プラン‧⽇時選択画⾯、ユーザ情報登録画⾯などのUI実装を担当。 サーバー側では、APIの実装、LIFFを⽤いてメッセージを送信する機能や、twilioを⽤いたSMS送信機能 を実装。 また、担当した機能の単体テストをVitestを使⽤して実装。',
+      'オーナー、デザイナー、開発者間の会話から⽣まれたタスク(機能)を2週間スパンで実装。\n開発はペアプロで⾏い、ドライバーとナビゲーターに分かれ作業を実施。\nフロント側では、プラン‧⽇時選択画⾯、ユーザ情報登録画⾯などのUI実装を担当。\nサーバー側では、APIの実装、LIFFを⽤いてメッセージを送信する機能や、twilioを⽤いたSMS送信機能を実装。 \nまた、担当した機能の単体テストをVitestを使⽤して実装。',
     environment:
       'AWS Lambda / ApiGateway / CodeCommit / S3 / CodePipeline / slack / Git',
     framework: 'Node.js / Nuxt(Vue3) / axios / Pinia / Vitest ',
@@ -33,7 +33,7 @@ const works: Record<string, DisplayWorkDetail> = {
       '官公庁向けの経営所得安定対策情報管理システムの開発にSESとして常駐。',
     phase: '実装',
     content:
-      'vb.netで開発された既存のソースをDjangoでのプログラムにリファクタリングする作業を実施。アップロードされたcsvファイルの中身を前年度と比較し出力する機能を担当。4ヶ月間常駐し、約2万行あったソースコードのリファクタリングを行いました。',
+      'VB.NETで開発された既存のソースをDjangoでのプログラムにリファクタリングする作業を実施。\nアップロードされたCSVファイルの中身を前年度と比較し出力する機能を担当。\n4ヶ月間常駐し、約2万行あったソースコードのリファクタリングを行いました。',
     environment: 'AWS Cloud9 / CodeCommit / S3 / Slack / Git',
     framework: 'Python / React',
     teamSize: '8人',
@@ -52,7 +52,7 @@ const works: Record<string, DisplayWorkDetail> = {
     teamSize: '5人',
   },
   'portfolio-5': {
-    title: 'ケーキ・洋菓子専門サイト「FUJIKI CAKE」HP制作',
+    title: 'ケーキ・洋菓子専門サイト\n「FUJIKI CAKE」HP制作',
     description:
       '小規模店舗向けに「想い」と「世界観」を丁寧に伝えるブランドサイトを制作。\n' +
       '両親が自営業で営むFujikiCAKEのホームページを自作しました。',
@@ -81,67 +81,85 @@ export default async function WorkDetailPage({
   if (!work) return notFound()
 
   return (
-    <div className="min-h-screen px-4 py-12 max-w-3xl mx-auto space-y-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 dark:bg-gray-900 dark:text-white">
       <Link
         href="/works"
-        className="inline-block text-gray-600 hover:underline"
+        className="inline-block text-gray-600 hover:underline dark:text-gray-300 mb-12 w-full max-w-2xl text-left"
       >
         <div className="flex items-center gap-1">
-          <FaAngleLeft className="text-base" />
+          <FaAngleLeft className="text-base dark:text-gray-300" />
           <span>一覧に戻る</span>
         </div>
       </Link>
 
-      <h1 className="text-4xl font-bold text-center border-b pb-4">
+      <h1 className="w-full max-w-2xl mb-12 text-4xl font-bold text-center border-b pb-4 whitespace-pre-line dark:border-gray-700">
         {work.title}
       </h1>
 
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold text-gray-800">概要</h2>
-        <p className="text-gray-700 leading-relaxed text-base whitespace-pre-line">
+      <section className="space-y-2 mb-12 w-full max-w-2xl text-left">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+          概要
+        </h2>
+        <p className="text-gray-700 leading-relaxed text-base whitespace-pre-line dark:text-gray-300">
           {work.description}
         </p>
       </section>
 
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold text-gray-800">担当工程</h2>
-        <p className="text-gray-700 text-base whitespace-pre-line">
+      <section className="space-y-2 mb-12 w-full max-w-2xl text-left">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+          担当工程
+        </h2>
+        <p className="text-gray-700 text-base whitespace-pre-line dark:text-gray-300">
           {work.phase}
         </p>
       </section>
 
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold text-gray-800">業務内容</h2>
-        <p className="text-gray-700 text-base whitespace-pre-line">
+      <section className="space-y-2 mb-12 w-full max-w-2xl text-left">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+          業務内容
+        </h2>
+        <p className="text-gray-700 text-base whitespace-pre-line dark:text-gray-300">
           {work.content}
         </p>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2">
+      <section className="grid gap-4 sm:grid-cols-2 mb-12 w-full max-w-2xl text-left">
         <div>
-          <h3 className="text-md font-semibold text-gray-800">開発環境</h3>
-          <p className="text-gray-700 text-sm">{work.environment}</p>
+          <h3 className="text-md mb-2 font-semibold text-gray-800 dark:text-gray-100">
+            開発環境
+          </h3>
+          <p className="text-gray-700 text-sm dark:text-gray-300">
+            {work.environment}
+          </p>
         </div>
         <div>
-          <h3 className="text-md font-semibold text-gray-800">
+          <h3 className="text-md mb-2 font-semibold text-gray-800 dark:text-gray-100">
             使用技術・フレームワーク
           </h3>
-          <p className="text-gray-700 text-sm">{work.framework}</p>
+          <p className="text-gray-700 text-sm dark:text-gray-300">
+            {work.framework}
+          </p>
         </div>
         <div className="sm:col-span-2">
-          <h3 className="text-md font-semibold text-gray-800">チーム体制</h3>
-          <p className="text-gray-700 text-sm">{work.teamSize}</p>
+          <h3 className="text-md mb-2 font-semibold text-gray-800 dark:text-gray-100">
+            チーム体制
+          </h3>
+          <p className="text-gray-700 text-sm dark:text-gray-300">
+            {work.teamSize}
+          </p>
         </div>
       </section>
 
       {work.url && (
-        <section className="space-y-2">
-          <h2 className="text-xl font-semibold text-gray-800">公開URL</h2>
+        <section className="space-y-2 w-full max-w-2xl text-left">
+          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+            公開URL
+          </h2>
           <a
             href={work.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline break-all"
+            className="text-blue-600 hover:underline break-all dark:text-blue-400"
           >
             {work.url}
           </a>

@@ -9,10 +9,13 @@ export const metadata: Metadata = {
 
 export default function Skills() {
   return (
-    <div className="min-h-screen px-6 py-12 max-w-4xl mx-auto bg-white text-black">
-      <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white text-black dark:bg-gray-900 dark:text-white">
+      <h1 className="font-extrabold text-4xl mb-8 flex justify-center items-center space-x-2">
         <span>
-          Skills <span className="text-gray-500 text-sm">技術スタック</span>
+          Skills{' '}
+          <span className="text-gray-500 text-sm dark:text-gray-400">
+            技術スタック
+          </span>
         </span>
       </h1>
 
@@ -22,7 +25,9 @@ export default function Skills() {
 
         {/* カウントアップ */}
         <EngineerExperienceYear />
-        <p className="text-lg text-gray-700 mt-2">日々学び、成長しています！</p>
+        <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
+          日々学び、成長しています！
+        </p>
       </div>
 
       {/* Skills */}

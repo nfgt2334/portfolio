@@ -25,7 +25,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="min-h-screen px-4 py-12 max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl px-4 py-12">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="name" className="block font-medium mb-1">
@@ -71,7 +71,7 @@ export function ContactForm() {
         </div>
         <button
           type="submit"
-          className="w-full bg-black text-white font-medium py-3 px-6 rounded-xl hover:bg-gray-800 transition cursor-pointer"
+          className="w-full bg-black dark:bg-white text-white dark:text-black font-medium py-3 px-6 rounded-xl hover:bg-gray-800 transition cursor-pointer"
         >
           送信
         </button>

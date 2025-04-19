@@ -12,10 +12,13 @@ export const metadata: Metadata = {
 
 export default function Profile() {
   return (
-    <div className="min-h-screen px-6 py-12 max-w-4xl mx-auto">
-      <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white text-black dark:bg-gray-900 dark:text-white">
+      <h1 className="font-extrabold text-4xl mb-8 flex justify-center items-center space-x-2">
         <span>
-          Profile <span className="text-gray-500 text-sm">プロフィール</span>
+          Profile{' '}
+          <span className="text-gray-500 text-sm dark:text-gray-400">
+            プロフィール
+          </span>
         </span>
       </h1>
 
@@ -29,11 +32,13 @@ export default function Profile() {
           className="rounded-full shadow-md mb-4"
         />
         <h1 className="text-3xl font-bold mb-2">Takeshi Fujiki</h1>
-        <p className="text-gray-600">フロントエンドエンジニア / アニメ好き</p>
+        <p className="text-gray-600 dark:text-gray-300">
+          フロントエンドエンジニア / アニメ好き
+        </p>
       </div>
 
       {/* Basic Info */}
-      <div className="grid sm:grid-cols-2 gap-6 mb-12">
+      <div className="grid sm:grid-cols-2 gap-6 mb-12 w-full max-w-2xl text-left">
         <InfoItem label="年齢" value="25歳" />
         <InfoItem label="拠点" value="神奈川県" />
         <InfoItem label="職種" value="フロントエンドエンジニア" />
@@ -56,7 +61,7 @@ export default function Profile() {
       </div>
 
       {/* Skills */}
-      <div className="mb-12">
+      <div className="mb-12 w-full max-w-2xl text-left">
         <h2 className="text-2xl font-semibold mb-4">Skills</h2>
         <div className="flex flex-wrap gap-4">
           <SkillBadge label="HTML" />
@@ -71,15 +76,15 @@ export default function Profile() {
       </div>
 
       {/* Self Introduction */}
-      <div>
+      <div className="w-full max-w-2xl text-left">
         <h2 className="text-2xl font-semibold mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-center text-center gap-1 sm:gap-2">
           <span>About Me</span>
           <span>ー</span>
-          <span className="text-gray-600">
+          <span className="text-gray-600 dark:text-gray-400">
             幅広く活躍できるエンジニアを目指しています
           </span>
         </h2>
-        <p className="text-gray-700 leading-relaxed space-y-4">
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
           <span className="block">
             フロントエンドエンジニアとして2年の経験があり、Vue.jsやNuxt.jsを中心としたWebアプリケーション開発を得意としています。
             現在はバックエンドにも関心を持ち、PythonとDjango REST
@@ -106,13 +111,13 @@ const InfoItem = ({
   value: React.ReactNode
 }) => (
   <div>
-    <p className="text-sm text-gray-500">{label}</p>
+    <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
     <div className="text-lg font-medium">{value}</div>
   </div>
 )
 
 const SkillBadge = ({ label }: { label: string }) => (
-  <span className="px-3 py-1 bg-slate-100 text-sm rounded-full text-gray-800 shadow-sm">
+  <span className="px-3 py-1 bg-slate-100 text-sm rounded-full text-gray-800 dark:bg-slate-700 dark:text-white shadow-sm">
     {label}
   </span>
 )
@@ -130,7 +135,7 @@ const SocialIcon = ({
     rel="noopener noreferrer"
     className="hover:scale-110 transition-transform"
   >
-    <div className="w-6 h-6 text-gray-600 hover:text-black mt-1 ml-0.5">
+    <div className="w-6 h-6 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white mt-1 ml-0.5">
       {icon}
     </div>
   </Link>
