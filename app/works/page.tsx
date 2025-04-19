@@ -49,24 +49,30 @@ export default function WorksPage() {
   const selfMadeWorks = works.filter((w) => w.selfMade)
 
   return (
-    <div className="min-h-screen px-4 py-12 max-w-4xl mx-auto space-y-16">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white text-black dark:bg-gray-900 dark:text-white">
+      <h1 className="font-extrabold text-4xl mb-8 flex justify-center items-center space-x-2">
+        <span>
+          Works{' '}
+          <span className="text-gray-500 text-sm dark:text-gray-400">
+            職務経歴
+          </span>
+        </span>
+      </h1>
+
       {/* 職務経歴 */}
       <section>
-        <h1 className="font-extrabold text-4xl font-bold mb-8 flex justify-center items-center space-x-2">
-          <span>
-            Works <span className="text-gray-500 text-sm">職務経歴</span>
-          </span>
-        </h1>
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid sm:grid-cols-2 gap-6 mb-12 w-full max-w-4xl">
           {careerWorks.map((work) => (
             <Link
               key={work.slug}
               href={`/works/${work.slug}`}
-              className="block p-6 border rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50"
+              className="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50 dark:hover:bg-gray-700"
             >
               <h2 className="text-xl font-semibold">{work.title}</h2>
               <span className="text-sm">{work.period}</span>
-              <p className="text-gray-600 text-sm mt-2">{work.description}</p>
+              <p className="text-gray-600 text-sm mt-2 dark:text-gray-300">
+                {work.description}
+              </p>
             </Link>
           ))}
         </div>
@@ -75,22 +81,26 @@ export default function WorksPage() {
       {/* 自作 */}
       {selfMadeWorks.length > 0 && (
         <section>
-          <h2 className="font-extrabold text-3xl font-bold mb-8 flex justify-center items-center space-x-2">
+          <h1 className="font-extrabold text-4xl mb-8 flex justify-center items-center space-x-2">
             <span>
               Personal Works{' '}
-              <span className="text-gray-500 text-sm">個人制作</span>
+              <span className="text-gray-500 text-sm dark:text-gray-400">
+                個人制作
+              </span>
             </span>
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2">
+          </h1>
+          <div className="grid sm:grid-cols-2 gap-6 mb-12 w-full max-w-4xl">
             {selfMadeWorks.map((work) => (
               <Link
                 key={work.slug}
                 href={`/works/${work.slug}`}
-                className="block p-6 border rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50"
+                className="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50 dark:hover:bg-gray-700"
               >
                 <h2 className="text-xl font-semibold">{work.title}</h2>
                 <span className="text-sm">{work.period}</span>
-                <p className="text-gray-600 text-sm mt-2">{work.description}</p>
+                <p className="text-gray-600 text-sm mt-2 dark:text-gray-300">
+                  {work.description}
+                </p>
               </Link>
             ))}
           </div>

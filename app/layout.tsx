@@ -1,6 +1,7 @@
 import Provider from '@/providers/Provider'
 import { Navigation } from '@/components/Navigation'
 import { Theme } from '@radix-ui/themes'
+import { ThemeProvider } from 'next-themes'
 import { Metadata } from 'next'
 import './globals.css'
 
@@ -15,14 +16,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Theme>
-          <Provider>
-            <Navigation />
-            {children}
-          </Provider>
-        </Theme>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Theme>
+            <Provider>
+              <Navigation />
+              {children}
+            </Provider>
+          </Theme>
+        </ThemeProvider>
       </body>
     </html>
   )
