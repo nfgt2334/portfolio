@@ -31,25 +31,33 @@ export function FlashMessageProvider({ children }: { children: ReactNode }) {
     <FlashMessageContext.Provider value={{ showMessage }}>
       {children}
       {message && (
-        <Toast.Provider>
+        <Toast.Provider swipeDirection="up">
           <Toast.Root
             open={open}
             onOpenChange={setOpen}
-            className={`p-4 rounded-md shadow-md z-50 
-            ${message.type === 'success' ? 'bg-green-100' : ''} 
-            ${message.type === 'error' ? 'bg-red-100' : ''} 
-            ${message.type === 'info' ? 'bg-blue-100' : ''}
+            className={`
+              p-4 rounded-xl shadow-lg border max-w-md w-full mx-auto flex flex-col space-y-1
+              ${message.type === 'success' ? 'bg-green-100 border-green-300' : ''}
+              ${message.type === 'error' ? 'bg-red-100 border-red-300' : ''}
+              ${message.type === 'info' ? 'bg-blue-100 border-blue-300' : ''}
             `}
           >
-            {message.title && <Toast.Title>{message.title}</Toast.Title>}
-            <Toast.Description>{message.message}</Toast.Description>
-            <Toast.Close>
-              <Text as="span" size="2" className="underline">
-                Close
+            {message.title && (
+              <Toast.Title className="text-base font-semibold">
+                {message.title}
+              </Toast.Title>
+            )}
+            <Toast.Description className="text-sm">
+              {message.message}
+            </Toast.Description>
+            <Toast.Close className="text-right mt-1">
+              <Text as="span" size="2" className="underline cursor-pointer">
+                閉じる
               </Text>
             </Toast.Close>
           </Toast.Root>
-          <Toast.Viewport className="fixed top-0 right-0 p-4 w-auto" />
+
+          <Toast.Viewport className="fixed top-20 left-1/2 transform -translate-x-1/2 z-[100] w-full max-w-md px-4" />
         </Toast.Provider>
       )}
     </FlashMessageContext.Provider>

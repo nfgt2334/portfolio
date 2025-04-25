@@ -1,77 +1,126 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { ContactSchema, ContactType } from '../schema/schema'
+import { useLoading } from '@/context/LoadingContext'
 import { useFlashMessage } from '@/context/FlashMessageContext'
-import { useState } from 'react'
 
 export function ContactForm() {
+  const { setLoading } = useLoading()
   const { showMessage } = useFlashMessage()
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors: formatError, isValid, isSubmitting },
+  } = useForm<ContactType>({
+    mode: 'onChange',
+    resolver: zodResolver(ContactSchema),
+  })
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // TODO: API
-    console.log('送信内容:', form)
-    showMessage({
-      title: '送信完了',
-      message: 'お問い合わせありがとうございます',
-      type: 'success',
-    })
+  const handleOnSubmit: SubmitHandler<ContactType> = async (data) => {
+    setLoading(true)
+
+    try {
+      console.log(data)
+      // フォーム送信処理 TODO: API
+      setTimeout(() => {
+        setLoading(false)
+        showMessage({
+          type: 'success',
+          message: 'お問い合わせありがとうございました！',
+          title: '送信完了',
+        })
+        reset()
+      }, 2000)
+    } catch (error) {
+      setLoading(false)
+      showMessage({
+        type: 'error',
+        message: '送信に失敗しました。再度お試しください。',
+        title: 'エラー',
+      })
+    }
   }
 
   return (
     <div className="w-full max-w-2xl px-4 py-12">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="name" className="block font-medium mb-1">
-            お名前
-          </label>
+      <form
+        method="post"
+        onSubmit={(event) => {
+          void handleSubmit(handleOnSubmit)(event)
+        }}
+        className="space-y-6"
+      >
+        <label className="block font-medium">
+          <p className="mb-2">お名前</p>
           <input
-            id="name"
-            name="name"
             type="text"
-            required
-            value={form.name}
-            onChange={handleChange}
+            {...register('name')}
             className="w-full p-3 border rounded-xl focus:outline-none focus:ring focus:ring-blue-200"
+            placeholder="山田 太郎"
           />
-        </div>
-        <div>
-          <label htmlFor="email" className="block font-medium mb-1">
-            メールアドレス
-          </label>
+          {formatError.name && (
+            <p className="text-red-500 pl-1 pt-1 text-md">
+              {formatError.name.message}
+            </p>
+          )}
+        </label>
+
+        <label className="block font-medium">
+          <p className="mb-2">メールアドレス</p>
           <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={handleChange}
+            type="text"
+            {...register('email')}
             className="w-full p-3 border rounded-xl focus:outline-none focus:ring focus:ring-blue-200"
+            placeholder="example@example.com"
           />
-        </div>
-        <div>
-          <label htmlFor="message" className="block font-medium mb-1">
-            メッセージ
-          </label>
+          {formatError.email && (
+            <p className="text-red-500 pl-1 pt-1 text-md">
+              {formatError.email.message}
+            </p>
+          )}
+        </label>
+
+        <label className="block font-medium">
+          <p className="mb-2">お問い合わせ内容</p>
           <textarea
-            id="message"
-            name="message"
+            {...register('message')}
             rows={5}
-            required
-            value={form.message}
-            onChange={handleChange}
             className="w-full p-3 border rounded-xl focus:outline-none focus:ring focus:ring-blue-200"
           />
+          {formatError.message && (
+            <p className="text-red-500 pl-1 pt-1 text-md">
+              {formatError.message.message}
+            </p>
+          )}
+        </label>
+
+        <div className="flex flex-col items-center space-y-1">
+          <div className="flex flex-row items-center space-x-2">
+            <label className="flex flex-row items-center space-x-2">
+              <input
+                type="checkbox"
+                value="true"
+                {...register('agree')}
+                className="h-5 w-5"
+              />
+              <p>個人情報取り扱いに同意する</p>
+            </label>
+          </div>
+          {formatError.agree && (
+            <div className="text-red-500 pl-1 pt-1 text-center text-xs">
+              {formatError.agree.message}
+            </div>
+          )}
         </div>
+
         <button
           type="submit"
-          className="w-full bg-black dark:bg-white text-white dark:text-black font-medium py-3 px-6 rounded-xl hover:bg-gray-800 transition cursor-pointer"
+          disabled={!isValid || isSubmitting}
+          className="w-full bg-slate-800 hover:bg-slate-600 rounded px-4 py-2 text-white disabled:bg-gray-300 md:self-center cursor-pointer"
         >
           送信
         </button>
