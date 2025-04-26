@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
-import { ContactSchema, ContactType } from '@/lib/schema/ContactFormSchema'
+import { ContactSchema } from '@/lib/schema/ContactFormSchema'
 
 const resendApiKey = process.env.RESEND_API_KEY
 const myEmail = process.env.CONTACT_TO
