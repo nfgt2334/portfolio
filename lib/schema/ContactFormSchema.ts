@@ -14,8 +14,8 @@ const subject = z
   .max(100, { message: '100文字以内で入力してください' })
   .optional()
 const message: z.ZodString = z
-  .string({ required_error: 'メッセージを入力してください' })
-  .min(1, { message: 'メッセージを入力してください' })
+  .string({ required_error: 'お問い合わせ内容を入力してください' })
+  .min(1, { message: 'お問い合わせ内容を入力してください' })
   .max(1000, { message: '1000文字以内で入力してください' })
 const agree: z.ZodLiteral<string> = z.literal('true', {
   errorMap: () => ({ message: '個人情報の取り扱いへの同意が必要です' }),

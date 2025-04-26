@@ -18,9 +18,6 @@ export default function ContactPage() {
           </span>
         </span>
       </h1>
-      <p className="font-extrabold text-red-500 text-sm text-center">
-        ※作成中につき、実際には送信されません。
-      </p>
       <Suspense fallback={<div>Loading...</div>}>
         <ContactForm />
       </Suspense>

@@ -3,12 +3,15 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ContactSchema, ContactType } from '@/lib/schema/ContactFormSchema'
+import { useUtils } from '@/hooks/useUtils'
 import { useLoading } from '@/context/LoadingContext'
 import { useFlashMessage } from '@/context/FlashMessageContext'
 
 export function ContactForm() {
   const { setLoading } = useLoading()
   const { showMessage } = useFlashMessage()
+
+  const utils = useUtils()
 
   const {
     register,
@@ -20,14 +23,21 @@ export function ContactForm() {
     resolver: zodResolver(ContactSchema),
   })
 
-  const handleOnSubmit: SubmitHandler<ContactType> = async (data) => {
+  const handleOnSubmit: SubmitHandler<ContactType> = async (
+    data: ContactType,
+  ) => {
+    const body = {
+      ...data,
+      message: utils.escapeHTML(data.message),
+    }
+
     setLoading(true)
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(body),
       })
 
       if (response.status !== 200) {

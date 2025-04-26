@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       html: `
         <p><strong>名前：</strong> ${name}</p>
         <p><strong>メールアドレス：</strong> ${email}</p>
-        <p><strong>メッセージ：</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
+        <p><strong>メッセージ：</strong><br/>${message}</p>
       `,
     })
 
