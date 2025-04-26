@@ -42,7 +42,7 @@ export function ContactForm() {
         title: '送信完了',
       })
       reset()
-    } catch (error) {
+    } catch {
       setLoading(false)
       showMessage({
         type: 'error',
