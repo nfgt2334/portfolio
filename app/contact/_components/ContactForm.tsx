@@ -62,7 +62,9 @@ export function ContactForm() {
         className="space-y-6"
       >
         <label className="block font-medium">
-          <p className="mb-2">お名前</p>
+          <p className="mb-2">
+            お名前<span className="text-red-500">*</span>
+          </p>
           <input
             type="text"
             {...register('name')}
@@ -77,7 +79,9 @@ export function ContactForm() {
         </label>
 
         <label className="block font-medium">
-          <p className="mb-2">メールアドレス</p>
+          <p className="mb-2">
+            メールアドレス<span className="text-red-500">*</span>
+          </p>
           <input
             type="text"
             {...register('email')}
@@ -92,7 +96,24 @@ export function ContactForm() {
         </label>
 
         <label className="block font-medium">
-          <p className="mb-2">お問い合わせ内容</p>
+          <p className="mb-2">件名</p>
+          <input
+            type="text"
+            {...register('subject')}
+            className="w-full p-3 border rounded-xl focus:outline-none focus:ring focus:ring-blue-200"
+            placeholder="ポートフォリオを見てのご連絡です"
+          />
+          {formatError.subject && (
+            <p className="text-red-500 pl-1 pt-1 text-md">
+              {formatError.subject.message}
+            </p>
+          )}
+        </label>
+
+        <label className="block font-medium">
+          <p className="mb-2">
+            お問い合わせ内容<span className="text-red-500">*</span>
+          </p>
           <textarea
             {...register('message')}
             rows={5}
@@ -114,7 +135,10 @@ export function ContactForm() {
                 {...register('agree')}
                 className="h-5 w-5"
               />
-              <p>個人情報取り扱いに同意する</p>
+              <p>
+                個人情報取り扱いに同意する
+                <span className="text-red-500">*</span>
+              </p>
             </label>
           </div>
           {formatError.agree && (

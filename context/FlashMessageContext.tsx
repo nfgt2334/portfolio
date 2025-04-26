@@ -37,21 +37,25 @@ export function FlashMessageProvider({ children }: { children: ReactNode }) {
             onOpenChange={setOpen}
             className={`
               p-4 rounded-xl shadow-lg border max-w-md w-full mx-auto flex flex-col space-y-1
-              ${message.type === 'success' ? 'bg-green-100 border-green-300' : ''}
-              ${message.type === 'error' ? 'bg-red-100 border-red-300' : ''}
-              ${message.type === 'info' ? 'bg-blue-100 border-blue-300' : ''}
+              ${message.type === 'success' ? 'bg-green-100 border-green-300 dark:bg-green-900 dark:border-green-700' : ''}
+              ${message.type === 'error' ? 'bg-red-100 border-red-300 dark:bg-red-900 dark:border-red-700' : ''}
+              ${message.type === 'info' ? 'bg-blue-100 border-blue-300 dark:bg-blue-900 dark:border-blue-700' : ''}
             `}
           >
             {message.title && (
-              <Toast.Title className="text-base font-semibold">
+              <Toast.Title className="text-base font-semibold text-black dark:text-white">
                 {message.title}
               </Toast.Title>
             )}
-            <Toast.Description className="text-sm">
+            <Toast.Description className="text-sm text-black dark:text-white">
               {message.message}
             </Toast.Description>
             <Toast.Close className="text-right mt-1">
-              <Text as="span" size="2" className="underline cursor-pointer">
+              <Text
+                as="span"
+                size="2"
+                className="underline cursor-pointer text-black dark:text-white"
+              >
                 閉じる
               </Text>
             </Toast.Close>

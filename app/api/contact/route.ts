@@ -18,14 +18,14 @@ export async function POST(req: Request) {
     )
   }
 
-  const { name, email, message } = body
+  const { name, email, subject, message } = body
 
   try {
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: myEmail!,
       replyTo: email,
-      subject: `お問い合わせ：${name}`,
+      subject: subject?.trim() ? subject : `お問い合わせ：${name}`,
       html: `
         <p><strong>名前：</strong> ${name}</p>
         <p><strong>メールアドレス：</strong> ${email}</p>
