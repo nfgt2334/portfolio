@@ -1,4 +1,5 @@
 import Provider from '@/providers/Provider'
+import { Analytics } from '@vercel/analytics/next'
 import { Navigation } from '@/components/Navigation'
 import { Theme } from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes'
@@ -23,6 +24,7 @@ export default function RootLayout({
             <Provider>
               <Navigation />
               {children}
+              <Analytics />
             </Provider>
           </Theme>
         </ThemeProvider>
