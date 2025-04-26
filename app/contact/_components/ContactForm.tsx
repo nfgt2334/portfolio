@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { ContactSchema, ContactType } from '../schema/schema'
+import { ContactSchema, ContactType } from '@/lib/schema/ContactFormSchema'
 import { useLoading } from '@/context/LoadingContext'
 import { useFlashMessage } from '@/context/FlashMessageContext'
 
@@ -24,17 +24,24 @@ export function ContactForm() {
     setLoading(true)
 
     try {
-      console.log(data)
-      // フォーム送信処理 TODO: API
-      setTimeout(() => {
-        setLoading(false)
-        showMessage({
-          type: 'success',
-          message: 'お問い合わせありがとうございました！',
-          title: '送信完了',
-        })
-        reset()
-      }, 2000)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (response.status !== 200) {
+        const error = await response.json()
+        throw new Error(error?.details || '送信に失敗しました')
+      }
+
+      setLoading(false)
+      showMessage({
+        type: 'success',
+        message: 'お問い合わせありがとうございました！',
+        title: '送信完了',
+      })
+      reset()
     } catch (error) {
       setLoading(false)
       showMessage({
