@@ -75,7 +75,10 @@ export function WorksContent() {
               <Link
                 key={work.slug}
                 href={`/works/${work.slug}`}
-                className="block h-42 p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50 dark:hover:bg-gray-700"
+                className="group flex flex-col justify-center h-42 py-14 px-8 border rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300
+                    bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 
+                    hover:scale-105 active:scale-95
+                    hover:bg-slate-50 dark:hover:bg-gray-700"
               >
                 <h2 className="text-xl font-semibold">{work.title}</h2>
                 <span className="text-sm">{work.period}</span>
@@ -116,7 +119,10 @@ export function WorksContent() {
                 <Link
                   key={work.slug}
                   href={`/works/${work.slug}`}
-                  className="block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md hover:shadow-lg transition-all hover:bg-slate-50 dark:hover:bg-gray-700"
+                  className="group flex flex-col justify-center h-42 py-14 px-8 border rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300
+                  bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 
+                  hover:scale-105 active:scale-95
+                  hover:bg-slate-50 dark:hover:bg-gray-700"
                 >
                   <h2 className="text-xl font-semibold">{work.title}</h2>
                   <span className="text-sm">{work.period}</span>
