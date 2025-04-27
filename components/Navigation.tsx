@@ -42,10 +42,11 @@ export const Navigation = () => {
             <Link
               key={href}
               href={href}
-              className="flex items-center space-x-1 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+              className="relative flex items-center space-x-1 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors group"
             >
               <Icon className="w-4 h-4" />
               <span className="text-sm font-medium">{label}</span>
+              <span className="absolute left-0 bottom-1 w-0 h-[1px] bg-black dark:bg-white transition-all group-hover:w-full"></span>
             </Link>
           ))}
           <ColorThemeSelector />
