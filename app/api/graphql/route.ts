@@ -11,9 +11,9 @@ const typeDefs = `#graphql
   }
 
   type Profile {
-    info: ProfileInfo
-    skills: [String]
-    descriptions: [String]
+    info: ProfileInfo!
+    skills: [String]!
+    descriptions: [String]!
   }
 
   type Query {
