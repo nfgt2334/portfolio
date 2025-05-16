@@ -1,4 +1,5 @@
 import { ApolloServer } from '@apollo/server'
+import { NextRequest } from 'next/server'
 import { startServerAndCreateNextHandler } from '@as-integrations/next'
 
 const typeDefs = `#graphql
@@ -53,5 +54,4 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers })
 
-export const GET = startServerAndCreateNextHandler(server)
-export const POST = startServerAndCreateNextHandler(server)
+export const POST = startServerAndCreateNextHandler<NextRequest>(server)
