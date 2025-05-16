@@ -1,9 +1,9 @@
+import './globals.css'
 import Provider from '@/providers/Provider'
 import { Navigation } from '@/components/Navigation'
 import { Theme } from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes'
 import { Metadata } from 'next'
-import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Portfolio',
