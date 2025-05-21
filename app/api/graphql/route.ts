@@ -54,4 +54,7 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers })
 
-export const POST = startServerAndCreateNextHandler<NextRequest>(server)
+export async function POST(req: NextRequest) {
+  const handler = startServerAndCreateNextHandler<NextRequest>(server)
+  return handler(req)
+}
