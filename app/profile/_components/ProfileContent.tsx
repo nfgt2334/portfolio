@@ -7,7 +7,30 @@ import { FaGithub } from 'react-icons/fa'
 import { SiWantedly } from 'react-icons/si'
 import { MotionWrapper } from '@/components/MotionWrapper'
 
+import { gql, useQuery } from '@apollo/client'
+
+const GET_PROFILE = gql`
+  query GetProfile {
+    getProfile {
+      info {
+        name
+        bio
+        age
+        located
+        occupation
+      }
+      skills
+      descriptions
+    }
+  }
+`
+
 export function ProfileContent() {
+  const { data, loading, error } = useQuery(GET_PROFILE)
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error.message}</p>
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white text-black dark:bg-gray-900 dark:text-white">
       {/* Header */}
@@ -40,9 +63,9 @@ export function ProfileContent() {
           height={120}
           className="rounded-full shadow-md mb-4"
         />
-        <h1 className="text-3xl font-bold mb-2">Takeshi Fujiki</h1>
+        <h1 className="text-3xl font-bold mb-2">{data.getProfile.info.name}</h1>
         <p className="text-gray-600 dark:text-gray-300">
-          フロントエンドエンジニア / アニメ好き
+          {data.getProfile.info.bio}
         </p>
       </MotionWrapper>
 
@@ -53,9 +76,9 @@ export function ProfileContent() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <InfoItem label="年齢" value="25歳" />
-        <InfoItem label="拠点" value="神奈川県" />
-        <InfoItem label="職種" value="フロントエンドエンジニア" />
+        <InfoItem label="年齢" value={`${data.getProfile.info.age}歳`} />
+        <InfoItem label="拠点" value={data.getProfile.info.located} />
+        <InfoItem label="職種" value={data.getProfile.info.occupation} />
         <InfoItem
           label="SNS"
           value={
@@ -83,14 +106,9 @@ export function ProfileContent() {
       >
         <h2 className="text-2xl font-semibold mb-4">Skills</h2>
         <div className="flex flex-wrap gap-4">
-          <SkillBadge label="HTML" />
-          <SkillBadge label="CSS" />
-          <SkillBadge label="JavaScript" />
-          <SkillBadge label="Vue.js" />
-          <SkillBadge label="Nuxt.js" />
-          <SkillBadge label="TypeScript" />
-          <SkillBadge label="React" />
-          <SkillBadge label="Next.js" />
+          {data.getProfile.skills.map((skill: string) => (
+            <SkillBadge key={skill} label={skill} />
+          ))}
         </div>
       </MotionWrapper>
 
@@ -109,18 +127,11 @@ export function ProfileContent() {
           </span>
         </h2>
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
-          <span className="block">
-            フロントエンドエンジニアとして2年の経験があり、Vue.jsやNuxt.jsを中心としたWebアプリケーション開発を得意としています。
-            現在はバックエンドにも関心を持ち、PythonとDjango REST
-            Frameworkを用いたAPI開発を独学で行っています。
-          </span>
-          <span className="block">
-            最近はNext.jsやTypeScriptの学習にも力を入れており、個人開発を通じて実践中です。
-          </span>
-          <span className="block">
-            将来的にはフロントエンドからバックエンドまで幅広く対応できるエンジニアとして、
-            プロダクト開発に深く関わり、価値のある機能を届けていける存在を目指しています。
-          </span>
+          {data.getProfile.descriptions.map((description: string) => (
+            <span key={description} className="block">
+              {description}
+            </span>
+          ))}
         </p>
       </MotionWrapper>
     </div>
