@@ -2,6 +2,9 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import ErrorSheet from '@/components/ErrorSheet'
+import LoadingSpinner from '@/components/LoadingSpinner'
+
 import { CiMail } from 'react-icons/ci'
 import { FaGithub } from 'react-icons/fa'
 import { SiWantedly } from 'react-icons/si'
@@ -28,8 +31,11 @@ const GET_PROFILE = gql`
 export function ProfileContent() {
   const { data, loading, error } = useQuery(GET_PROFILE)
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error: {error.message}</p>
+  if (loading) return <LoadingSpinner />
+  if (error)
+    return (
+      <ErrorSheet statusCode={400} statusText="test" message={error.message} />
+    )
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white text-black dark:bg-gray-900 dark:text-white">
