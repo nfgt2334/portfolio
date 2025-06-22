@@ -51,12 +51,12 @@ export function SkillList() {
     {
       icon: <FaReact size={40} className="text-blue-500" />,
       label: 'React',
-      experience: '2ヶ月 (独学)',
+      experience: calculateExperience('2025-03-01') + ' (独学)',
     },
     {
       icon: <RiNextjsFill size={40} />,
       label: 'Next.js',
-      experience: '2ヶ月 (独学)',
+      experience: calculateExperience('2025-03-01') + ' (独学)',
     },
   ]
 
@@ -64,66 +64,82 @@ export function SkillList() {
     {
       icon: <FaPython size={40} className="text-blue-500" />,
       label: 'Python',
-      experience: '6ヶ月',
+      experience: calculateExperience('2024-05-01'),
     },
     {
       icon: <FaPhp size={40} className="text-indigo-600" />,
       label: 'PHP',
-      experience: '6ヶ月 (独学)',
+      experience: calculateExperience('2024-07-01') + ' (独学)',
     },
   ]
 
   return (
-    <div className="px-6 py-12 max-w-4xl mx-auto">
+    <div className="space-y-12">
       {/* フロントエンド */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Front-end Development</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {fronrendSkillList.map((skill, index) => (
-            <MotionWrapper
-              key={skill.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-            >
-              <div className="flex items-center gap-4">
-                {skill.icon}
-                <div>
-                  <h3 className="font-medium">{skill.label}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {skill.experience} 年
+      <MotionWrapper
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Front-end Development
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {fronrendSkillList.map((skill, index) => (
+              <MotionWrapper
+                key={skill.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+              >
+                <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-700 dark:to-gray-600 rounded-xl p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-600">
+                  <div className="flex justify-center mb-3">{skill.icon}</div>
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-1">
+                    {skill.label}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                    {skill.experience}
                   </p>
                 </div>
-              </div>
-            </MotionWrapper>
-          ))}
+              </MotionWrapper>
+            ))}
+          </div>
         </div>
-      </div>
+      </MotionWrapper>
 
       {/* バックエンド */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Back-end Development</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {backendSkillList.map((skill, index) => (
-            <MotionWrapper
-              key={skill.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-            >
-              <div className="flex items-center gap-4">
-                {skill.icon}
-                <div>
-                  <h3 className="font-medium">{skill.label}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {skill.experience} 年
+      <MotionWrapper
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            Back-end Development
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {backendSkillList.map((skill, index) => (
+              <MotionWrapper
+                key={skill.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+              >
+                <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-700 dark:to-gray-600 rounded-xl p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-600">
+                  <div className="flex justify-center mb-3">{skill.icon}</div>
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-1">
+                    {skill.label}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                    {skill.experience}
                   </p>
                 </div>
-              </div>
-            </MotionWrapper>
-          ))}
+              </MotionWrapper>
+            ))}
+          </div>
         </div>
-      </div>
+      </MotionWrapper>
     </div>
   )
 }
