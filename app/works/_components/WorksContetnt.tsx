@@ -8,34 +8,27 @@ const works: DisplayWork[] = [
   {
     slug: 'portfolio-1',
     title: '自社サービス開発',
-    period: '2024年2月〜在職中',
+    period: '2024年2月〜2025年3月',
     description:
-      'IPO (新規上場) を目指す企業向けに、タスク管理や情報共有、進捗管理などを一元化して支援するSaaS型クラウドサービス。',
+      'IPO (新規上場) を目指す企業向けに、タスク・進捗管理や情報共有を一元化するSaaS型クラウドサービス。IPO準備クラウド、および上場企業の決算開示業務を支援する「クラウド決算開示」の機能追加・改修を担当。',
   },
   {
     slug: 'portfolio-2',
-    title: '保険契約者向けLIFFアプリ開発',
-    period: '2023年9月〜2024年1月',
-    description: '個人のお客様向けの保険加入WebサイトをLIFFアプリにて開発。',
+    title: '保険契約者向けWebアプリ開発（LIFFアプリ開発）',
+    period: '2023年9月〜2023年12月',
+    description: '個人向け保険の加入をLINE上で完結できるLIFFアプリを開発。LINE連携により、ユーザーはチャット内で手軽に保険申込が可能。',
   },
   {
     slug: 'portfolio-3',
     title: '官公庁向け経営所得安定対策情報管理システム開発',
     period: '2023年5月〜2023年8月',
     description:
-      '官公庁向けの経営所得安定対策情報管理システムの開発にSESとして常駐。',
-  },
-  {
-    slug: 'portfolio-4',
-    title: '資格取得用学習Webサイト開発',
-    period: '2023年2月〜2023年4月',
-    description:
-      'P2MやJSTQBなどの資格を取得する為の勉強用Webサイトを社内で開発。',
+      '官公庁向けの経営所得安定対策情報管理システムにおいて、既存VB.NETプロジェクトをPythonへリプレイスする業務。',
   },
   {
     slug: 'portfolio-5',
     title: '個人店向けHP',
-    period: '2024年3月〜2023年5月',
+    period: '2023年3月〜2023年5月',
     description: '両親が自営業で営むFujikiCAKEのホームページを自作しました。',
     selfMade: true,
   },
@@ -46,94 +39,103 @@ export function WorksContent() {
   const selfMadeWorks = works.filter((w) => w.selfMade)
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-white text-black dark:bg-gray-900 dark:text-white">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 text-black dark:text-white transition-colors duration-300">
       <MotionWrapper
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="text-center mb-16"
       >
-        <h1 className="font-extrabold text-4xl mb-8 flex justify-center items-center space-x-2">
-          <span>
-            Works{' '}
-            <span className="text-gray-500 text-sm dark:text-gray-400">
-              職務経歴
-            </span>
-          </span>
+        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+          Works
         </h1>
+        <p className="text-gray-600 dark:text-gray-400 text-lg font-medium">
+          職務経歴・個人制作
+        </p>
       </MotionWrapper>
 
       {/* 職務経歴 */}
-      <section>
-        <div className="grid sm:grid-cols-2 gap-6 mb-12 w-full max-w-4xl">
-          {careerWorks.map((work, index) => (
-            <MotionWrapper
-              key={work.slug}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.2 }}
-            >
-              <Link
-                key={work.slug}
-                href={`/works/${work.slug}`}
-                className="group flex flex-col justify-center h-42 py-14 px-8 border rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300
-                    bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 
-                    hover:scale-105 active:scale-95
-                    hover:bg-slate-50 dark:hover:bg-gray-700"
-              >
-                <h2 className="text-xl font-semibold">{work.title}</h2>
-                <span className="text-sm">{work.period}</span>
-                <p className="text-gray-600 text-sm mt-2 dark:text-gray-300">
-                  {work.description}
-                </p>
-              </Link>
-            </MotionWrapper>
-          ))}
-        </div>
-      </section>
-
-      {/* 自作 */}
       <MotionWrapper
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="w-full max-w-6xl mb-16"
       >
-        <h1 className="font-extrabold text-4xl mb-8 flex justify-center items-center space-x-2">
-          <span>
-            Personal Works{' '}
-            <span className="text-gray-500 text-sm dark:text-gray-400">
-              個人制作
-            </span>
-          </span>
-        </h1>
-      </MotionWrapper>
-      {selfMadeWorks.length > 0 && (
-        <section>
-          <div className="grid sm:grid-cols-2 gap-6 mb-12 w-full max-w-4xl">
-            {selfMadeWorks.map((work, index) => (
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
+          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Career Works
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {careerWorks.map((work, index) => (
               <MotionWrapper
                 key={work.slug}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               >
                 <Link
-                  key={work.slug}
                   href={`/works/${work.slug}`}
-                  className="group flex flex-col justify-center h-42 py-14 px-8 border rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300
-                  bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 
-                  hover:scale-105 active:scale-95
-                  hover:bg-slate-50 dark:hover:bg-gray-700"
+                  className="group block h-full"
                 >
-                  <h2 className="text-xl font-semibold">{work.title}</h2>
-                  <span className="text-sm">{work.period}</span>
-                  <p className="text-gray-600 text-sm mt-2 dark:text-gray-300">
-                    {work.description}
-                  </p>
+                  <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 h-full border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group-hover:border-blue-200 dark:group-hover:border-blue-700">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                      {work.title}
+                    </h3>
+                    <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-3">
+                      {work.period}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                      {work.description}
+                    </p>
+                  </div>
                 </Link>
               </MotionWrapper>
             ))}
           </div>
-        </section>
+        </div>
+      </MotionWrapper>
+
+      {/* 個人制作 */}
+      {selfMadeWorks.length > 0 && (
+        <MotionWrapper
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="w-full max-w-6xl"
+        >
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
+            <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Personal Works
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {selfMadeWorks.map((work, index) => (
+                <MotionWrapper
+                  key={work.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                >
+                  <Link
+                    href={`/works/${work.slug}`}
+                    className="group block h-full"
+                  >
+                    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 h-full border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group-hover:border-purple-200 dark:group-hover:border-purple-700">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                        {work.title}
+                      </h3>
+                      <p className="text-sm text-purple-600 dark:text-purple-400 font-medium mb-3">
+                        {work.period}
+                      </p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                        {work.description}
+                      </p>
+                    </div>
+                  </Link>
+                </MotionWrapper>
+              ))}
+            </div>
+          </div>
+        </MotionWrapper>
       )}
     </div>
   )
